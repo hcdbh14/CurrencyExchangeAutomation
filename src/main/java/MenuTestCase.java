@@ -1,5 +1,7 @@
 //import java.net.MalformedURLException;
 //import org.junit.Before;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +17,7 @@ public class MenuTestCase {
 
     public static IOSDriver<IOSElement> driver;
     public static Pages menuPage;
-    public static Pages CurrencyPick;
+
 
     public void click(WebElement element) {
         elementToClicable(element);
@@ -39,8 +41,8 @@ public class MenuTestCase {
         System.out.println(element.getText() + "is visible");
     }
 
-    @BeforeClass
-    public static void getDriver() {
+    @Before
+    public void getDriver() {
         driver = ServerConnect.setUp();
     }
 
@@ -60,13 +62,19 @@ public class MenuTestCase {
 
     @Test
     public void verifyCurrencyPicElements() throws InterruptedException {
-        CurrencyPick = new Pages(driver);
+        menuPage = new Pages(driver);
 
+        click(menuPage.addCurrencyButton);
         Thread.sleep(5);
-        elementToBeVisible(CurrencyPick.arrowLeft);
-        elementToBeVisible(CurrencyPick.currencyIHave);
-        elementToBeVisible(CurrencyPick.currencyIWant);
-        elementToClicable(CurrencyPick.closeButton);
-        elementToBeVisible(CurrencyPick.pickTitle);
+        elementToBeVisible(menuPage.arrowLeft);
+        elementToBeVisible(menuPage.currencyIHave);
+        elementToBeVisible(menuPage.currencyIWant);
+        elementToClicable(menuPage.closeButton);
+        elementToBeVisible(menuPage.pickTitle);
+    }
+
+    @After
+    public void afterTest() {
+        driver.closeApp();
     }
 }
