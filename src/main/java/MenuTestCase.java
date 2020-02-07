@@ -17,7 +17,7 @@ public class MenuTestCase {
 
 
     public void click(WebElement element) {
-        elementToClicable(element);
+        elementToClickable(element);
         element.click();
     }
 
@@ -26,7 +26,7 @@ public class MenuTestCase {
         element.sendKeys(keys);
     }*/
 
-    public void elementToClicable(WebElement element) {
+    public void elementToClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         System.out.println(element.getText() + " is available for Click");
@@ -46,9 +46,9 @@ public class MenuTestCase {
     @Test
     public void verifyIntroPageElements() {
         menuPage = new Pages(driver);
-        elementToClicable(menuPage.addCurrencyButton);
-        elementToClicable(menuPage.editButton);
-        elementToBeVisible(menuPage.pageTitle);
+        elementToClickable(menuPage.addCurrencyButton);
+        elementToClickable(menuPage.editButton);
+        elementToBeVisible(menuPage.menuTitle);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class MenuTestCase {
         elementToBeVisible(menuPage.downArrow);
         elementToBeVisible(menuPage.currencyIHave);
         elementToBeVisible(menuPage.currencyIWant);
-        elementToClicable(menuPage.closeButton);
+        elementToClickable(menuPage.closeButton);
         elementToBeVisible(menuPage.pickTitle);
     }
 

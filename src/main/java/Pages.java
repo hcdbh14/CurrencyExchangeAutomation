@@ -17,7 +17,7 @@ public class Pages {
     public WebElement editButton;
 
     @iOSXCUITFindBy(accessibility = "מטבעות שלי")
-    public WebElement pageTitle;
+    public WebElement menuTitle;
 
     @iOSXCUITFindBy(accessibility = "plus")
     public WebElement addCurrencyButton;
