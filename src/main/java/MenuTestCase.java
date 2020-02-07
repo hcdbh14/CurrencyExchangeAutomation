@@ -1,17 +1,14 @@
 //import java.net.MalformedURLException;
 //import org.junit.Before;
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import org.junit.After;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 
-import java.util.concurrent.TimeUnit;
 
 public class MenuTestCase {
 
@@ -61,12 +58,11 @@ public class MenuTestCase {
     }
 
     @Test
-    public void verifyCurrencyPicElements() throws InterruptedException {
+    public void verifyCurrencyPicElements() {
         menuPage = new Pages(driver);
 
         click(menuPage.addCurrencyButton);
-        Thread.sleep(5);
-        elementToBeVisible(menuPage.arrowLeft);
+        elementToBeVisible(menuPage.downArrow);
         elementToBeVisible(menuPage.currencyIHave);
         elementToBeVisible(menuPage.currencyIWant);
         elementToClicable(menuPage.closeButton);

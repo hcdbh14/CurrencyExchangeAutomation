@@ -26,8 +26,8 @@ public class Pages {
     @iOSXCUITFindBy(accessibility = "בחרו מטבעות להשוואה")
     public WebElement pickTitle;
 
-    @iOSXCUITFindBy(accessibility = "arrow.left")
-    public WebElement arrowLeft;
+    @iOSXCUITFindBy(accessibility = "down-arrow")
+    public WebElement downArrow;
 
     @iOSXCUITFindBy(accessibility = "currencyIHave")
     public WebElement currencyIHave;
