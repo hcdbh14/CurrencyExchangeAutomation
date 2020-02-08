@@ -1,5 +1,6 @@
 package AppiumUtilities;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.ios.IOSDriver;
@@ -28,5 +29,11 @@ public class UserActions {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(element));
         System.out.println(element.getText() + "is visible");
+    }
+
+    public static void scroll(IOSDriver<IOSElement> driver, WebElement element) {
+        TouchActions action = new TouchActions(driver);
+        action.scroll(element, 10, 100);
+        action.perform();
     }
 }
