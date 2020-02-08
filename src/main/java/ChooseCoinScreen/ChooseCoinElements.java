@@ -16,10 +16,10 @@ public class ChooseCoinElements {
     @iOSXCUITFindBy(accessibility = "down-arrow")
     public WebElement downArrow;
 
-    @iOSXCUITFindBy(accessibility = "currencyIHave")
+    @iOSXCUITFindBy(accessibility = "coinIHave")
     public WebElement currencyIHave;
 
-    @iOSXCUITFindBy(accessibility = "currencyIWant")
+    @iOSXCUITFindBy(accessibility = "coinIWant")
     public WebElement currencyIWant;
 
     @iOSXCUITFindBy(accessibility = "סגור")
