@@ -28,7 +28,8 @@ public class CoinSelectionTestCase {
 
         UserActions.click(menuPage.addCurrencyButton);
         UserActions.click(chooseCoinPage.currencyIHave);
-        UserActions.scroll(driver, coinSelectionPage.lastListElement);
+        UserActions.scroll();
+        UserActions.scrollTo(coinSelectionPage.lastListElement);
     }
 
     @After

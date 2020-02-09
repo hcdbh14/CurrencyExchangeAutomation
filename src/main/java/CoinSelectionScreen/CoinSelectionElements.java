@@ -9,10 +9,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class CoinSelectionElements {
     IOSDriver<IOSElement> driver;
 
-    @iOSXCUITFindBy(accessibility = "רופי הודי הודו")
+    @iOSXCUITFindBy(accessibility = "רובל רוסי")
     public WebElement lastListElement;
-
-
 
     public CoinSelectionElements(IOSDriver<IOSElement> driver) {
         this.driver = driver;
