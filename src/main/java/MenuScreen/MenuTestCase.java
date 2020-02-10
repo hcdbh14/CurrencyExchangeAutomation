@@ -1,11 +1,13 @@
 package MenuScreen;
-import AppiumUtilities.ServerConnect;
-import AppiumUtilities.UserActions;
+import AppiumUtilities.Base;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
+
+import static AppiumUtilities.Base.elementToBeVisible;
+import static AppiumUtilities.Base.elementToClickable;
 
 
 public class MenuTestCase {
@@ -15,19 +17,20 @@ public class MenuTestCase {
 
     @Before
     public void getDriver() {
-        driver = ServerConnect.setUp();
+        driver = Base.setUp();
+        menuPage = new MenuElements(driver);
     }
 
     @Test
     public void verifyIntroPageElements() {
-        menuPage = new MenuElements(driver);
-        UserActions.elementToClickable(driver, menuPage.addCurrencyButton);
-        UserActions.elementToClickable(driver, menuPage.editButton);
-        UserActions.elementToBeVisible(driver, menuPage.menuTitle);
+        elementToClickable(menuPage.addCurrencyButton);
+        elementToClickable(menuPage.editButton);
+        elementToBeVisible(menuPage.menuTitle);
     }
 
     @After
     public void afterTest() {
+
         driver.closeApp();
     }
 }

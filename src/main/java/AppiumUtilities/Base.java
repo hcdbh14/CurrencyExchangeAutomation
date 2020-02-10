@@ -1,40 +1,63 @@
 package AppiumUtilities;
+import java.net.MalformedURLException;
+import java.net.URL;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static AppiumUtilities.ServerConnect.driver;
+public class Base {
+    static IOSDriver<IOSElement> driver;
 
-public class UserActions {
+    public static IOSDriver<IOSElement> setUp()  {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
+        capabilities.setCapability("platformName", "IOS");
+        capabilities.setCapability("deviceName", "iPhone 8");
+        capabilities.setCapability("platformVersion", "13.3");
+        capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability("bundleId", "kenny.CurrencyExchange");
+        capabilities.setCapability("udid", "5EE89D49-FEA1-4771-9201-6C407BFD480C");
+        capabilities.setCapability("app",
+                "/Users/kennykurochkin/Library/Developer/Xcode/DerivedData/CurrencyExchange-hdukkrajbgrqrpbqsmmientuztpc/Build/Products/Debug-iphonesimulator/CurrencyExchange.app");
 
+        URL url;
+        try {
+            url = new URL("http://127.0.0.1:4723/wd/hub");
+            driver = new IOSDriver<IOSElement>(url, capabilities);
+        } catch (MalformedURLException e) {
+            //
+        }
+        System.out.println("Application is launched");
+        return driver;
+    }
 
     public static void click(WebElement element) {
+
         element.click();
     }
 
-    public static void sendKeys(IOSDriver<IOSElement> driver, WebElement element , String keys) {
+    public static void sendKeys(WebElement element , String keys) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.sendKeys(keys);
     }
 
-    public static void elementToClickable(IOSDriver<IOSElement> driver, WebElement element) {
+    public static void elementToClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         System.out.println(element.getText() + " is available for Click");
     }
 
-    public static void elementToBeVisible(IOSDriver<IOSElement> driver, WebElement element) {
+    public static void elementToBeVisible(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(element));
         System.out.println(element.getText() + "is visible");
     }
-
 
     public static void scrollTo(WebElement element) {
         int countScrolls = 0;
