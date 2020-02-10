@@ -1,14 +1,16 @@
-package ChooseCoinScreen;
+package pages;
+
+import appiumUtilities.InitPages;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
-public class ChooseCoinElements {
+public class ChooseCoinPage extends InitPages {
 
-    IOSDriver<IOSElement> driver;
+    public ChooseCoinPage(IOSDriver<IOSElement> driver) {
+        super(driver);
+    }
 
     @iOSXCUITFindBy(accessibility = "בחרו מטבעות להשוואה")
     public WebElement pickTitle;
@@ -25,8 +27,4 @@ public class ChooseCoinElements {
     @iOSXCUITFindBy(accessibility = "סגור")
     public WebElement closeButton;
 
-    public ChooseCoinElements(IOSDriver<IOSElement> driver) {
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
 }

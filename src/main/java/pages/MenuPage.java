@@ -1,14 +1,16 @@
-package MenuScreen;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
+package pages;
+
+import appiumUtilities.InitPages;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.WebElement;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
-public class MenuElements {
+public class MenuPage extends InitPages {
 
-    IOSDriver<IOSElement> driver;
+    public MenuPage(IOSDriver<IOSElement> driver) {
+        super(driver);
+    }
 
     @iOSXCUITFindBy(accessibility = "עריכה")
     public WebElement editButton;
@@ -18,10 +20,4 @@ public class MenuElements {
 
     @iOSXCUITFindBy(accessibility = "plus")
     public WebElement addCurrencyButton;
-
-
-    public MenuElements(IOSDriver<IOSElement> driver) {
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
 }

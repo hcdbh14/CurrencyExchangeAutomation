@@ -1,8 +1,10 @@
-package AppiumUtilities;
+package appiumUtilities;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import org.junit.Before;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.ios.IOSDriver;
@@ -11,7 +13,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Base {
-    static IOSDriver<IOSElement> driver;
+
+    public static IOSDriver<IOSElement> driver;
+    public static Pages pages;
+
+    @Before
+    public void init() {
+
+        pages = new Pages(driver);
+    }
+
+    public Base() {
+
+        driver = setUp();
+    }
 
     public static IOSDriver<IOSElement> setUp()  {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -36,52 +51,52 @@ public class Base {
         return driver;
     }
 
-    public static void click(WebElement element) {
-
+    public void click(WebElement element) {
+        System.out.println("click on - " + element.getText());
         element.click();
     }
 
-    public static void sendKeys(WebElement element , String keys) {
+    public void sendKeys(WebElement element , String keys) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        System.out.println("send keys as - " + element.getText());
         element.sendKeys(keys);
     }
 
-    public static void elementToClickable(WebElement element) {
+    public void elementToClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         System.out.println(element.getText() + " is available for Click");
     }
 
-    public static void elementToBeVisible(WebElement element) {
+    public void elementToBeVisible(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(element));
         System.out.println(element.getText() + "is visible");
     }
 
-    public static void scrollTo(WebElement element) {
+    public void scrollTo(WebElement element) {
         int countScrolls = 0;
 
         while (countScrolls < 10) {
+
             if (element.isDisplayed()) {
-                System.out.println("Element Is Located - " + element);
+                System.out.println("Element Is Located - " + element.getText());
                 break;
+            } else {
+                countScrolls++;
+                scroll();
             }
-            countScrolls ++;
-            scroll();
         }
     }
 
-    public static void scroll() {
+    public void scroll() {
         TouchAction action = new TouchAction(driver);
         int startX = driver.manage().window().getSize().getWidth() / 2;
-
         PointOption pointOption = new PointOption();
-        pointOption.withCoordinates(startX ,(int)((double) driver.manage().window().getSize().getWidth() * 0.6D));
-
+        pointOption.withCoordinates(startX ,(int)((double) driver.manage().window().getSize().getWidth() * 0.8D));
         PointOption pointOption1 = new PointOption();
         pointOption1.withCoordinates(startX ,(int)((double) driver.manage().window().getSize().getWidth() * 0.3D));
-
         action.longPress(pointOption).moveTo(pointOption1).release().perform();
     }
 }
