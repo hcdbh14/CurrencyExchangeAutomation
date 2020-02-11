@@ -1,6 +1,6 @@
 package tests;
 
-import appiumUtilities.Base;
+import utilities.Base;
 import org.junit.Test;
 import org.junit.After;
 

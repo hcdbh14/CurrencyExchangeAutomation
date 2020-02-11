@@ -1,4 +1,4 @@
-package appiumUtilities;
+package utilities;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;

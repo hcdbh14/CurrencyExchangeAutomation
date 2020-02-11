@@ -1,4 +1,4 @@
-package appiumUtilities;
+package utilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,7 +28,7 @@ public class Base {
         driver = setUp();
     }
 
-    public static IOSDriver<IOSElement> setUp()  {
+    public static IOSDriver<IOSElement> setUp() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("platformName", "IOS");
@@ -56,7 +56,7 @@ public class Base {
         element.click();
     }
 
-    public void sendKeys(WebElement element , String keys) {
+    public void sendKeys(WebElement element, String keys) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         System.out.println("send keys as - " + element.getText());
@@ -94,9 +94,9 @@ public class Base {
         TouchAction action = new TouchAction(driver);
         int startX = driver.manage().window().getSize().getWidth() / 2;
         PointOption pointOption = new PointOption();
-        pointOption.withCoordinates(startX ,(int)((double) driver.manage().window().getSize().getWidth() * 0.8D));
+        pointOption.withCoordinates(startX, (int) ((double) driver.manage().window().getSize().getWidth() * 0.8D));
         PointOption pointOption1 = new PointOption();
-        pointOption1.withCoordinates(startX ,(int)((double) driver.manage().window().getSize().getWidth() * 0.3D));
+        pointOption1.withCoordinates(startX, (int) ((double) driver.manage().window().getSize().getWidth() * 0.3D));
         action.longPress(pointOption).moveTo(pointOption1).release().perform();
     }
 }

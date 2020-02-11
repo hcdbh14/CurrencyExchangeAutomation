@@ -1,6 +1,6 @@
 package pages;
 
-import appiumUtilities.InitPages;
+import utilities.InitPages;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.WebElement;

@@ -1,6 +1,6 @@
 package tests;
 
-import appiumUtilities.Base;
+import utilities.Base;
 import org.junit.Test;
 import org.junit.After;
 
@@ -10,8 +10,8 @@ public class CoinSelectionTests extends Base {
     public void scrollToLastElement() {
         click(pages.menuPage.addCurrencyButton);
         click(pages.chooseCoinPage.currencyIHave);
-        scrollTo(pages.coinSelectionPage.lastListElement);
-        click(pages.coinSelectionPage.lastListElement);
+        scrollTo(pages.coinSelectionPage.russianCoin);
+        click(pages.coinSelectionPage.russianCoin);
     }
 
     @After

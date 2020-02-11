@@ -1,4 +1,4 @@
-package appiumUtilities;
+package utilities;
 
 import pages.ChooseCoinPage;
 import pages.CoinSelectionPage;
@@ -17,5 +17,4 @@ public class Pages {
         this.coinSelectionPage = new CoinSelectionPage(driver);
         this.menuPage = new MenuPage(driver);
     }
-
 }

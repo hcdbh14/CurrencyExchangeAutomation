@@ -1,6 +1,6 @@
 package pages;
 
-import appiumUtilities.InitPages;
+import utilities.InitPages;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
@@ -26,5 +26,4 @@ public class ChooseCoinPage extends InitPages {
 
     @iOSXCUITFindBy(accessibility = "סגור")
     public WebElement closeButton;
-
 }
